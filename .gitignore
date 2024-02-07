@@ -19,6 +19,7 @@ docs_build
 site_build
 venv
 .env
+/.env
 docs.zip
 archive.zip
 
@@ -29,3 +30,8 @@ archive.zip
 
 # macOS
 .DS_Store
+
+__pycache__
+.env
+env
+db.sqlite3
