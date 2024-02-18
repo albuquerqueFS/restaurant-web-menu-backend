@@ -12,8 +12,10 @@ class RestaurantBase(BaseModel):
 
 
 class RestaurantCreate(RestaurantBase):
-    menus = Optional[MenuBase] = None
-    pass
+    menus: Optional[MenuBase] = None
+
+    class Config:
+        orm_mode = True
 
 class RestaurantPatch(BaseModel):
     name: Optional[str] = None
