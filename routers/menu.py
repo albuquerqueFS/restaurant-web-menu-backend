@@ -23,7 +23,7 @@ def get_menus(db: Session = Depends(get_db)):
 
 @router.post("/", response_model=schemas.MenuRead, tags=["menu"])
 def create_menus(restaurant_id: int, request: schemas.MenuCreate, db: Session = Depends(get_db)):
-    menu = services.create_menu(db, restaurant_id, models.Menu(**request.dict()))
+    menu = services.create_menu(db, restaurant_id, models.Menu(**request.dict(), restaurant_id=restaurant_id))
     return menu
 
 @router.patch("/{id}", response_model=schemas.MenuRead, tags=["menu"])

@@ -1,10 +1,12 @@
+import psycopg2
+
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 
-DB_URL = "sqlite:///db.sqlite3"
+DB_URL = "postgresql+psycopg2://postgres:postgres@db:5432/menuapp"
 
-engine = create_engine(DB_URL, echo=True, connect_args={"check_same_thread": False})
+engine = create_engine(DB_URL, echo=True)
 
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 Base = declarative_base()

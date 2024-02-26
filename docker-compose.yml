@@ -1,8 +1,37 @@
 version: "3.8"
+
 services:
+  db:
+    image: postgres:12-alpine
+    container_name: fastapiapp_demodb
+    restart: always
+    environment:
+      - POSTGRES_DB=menuapp
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - "5432:5432"
+    networks:
+      - fastapiappnetwork
+    volumes:
+      - db_data:/var/lib/postgresql/data
+
   backend:
     build: .
+    image: fastapiapp
+    container_name: menu_online_backend
     ports:
       - "8000:8000"
     volumes:
       - .:/home
+    depends_on:
+      - db
+    networks:
+      - fastapiappnetwork
+
+networks:
+  fastapiappnetwork:
+    driver: bridge
+
+volumes:
+  db_data:

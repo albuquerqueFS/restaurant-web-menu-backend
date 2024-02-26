@@ -7,7 +7,6 @@ class MenuBase(BaseModel):
     description: str
     price: float
     image: str
-    restaurant_id: int
 
 class MenuCreate(MenuBase):
     class Config:

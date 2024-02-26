@@ -2,6 +2,7 @@ from sqlalchemy.orm import Session
 from fastapi import HTTPException
 
 from models.restaurant import Restaurant as RestaurantModel
+from models.user import User
 from schemas.restaurant import Restaurant as RestaurantSchema, RestaurantPatch
 
 def get_restaurant(id: int, db: Session):

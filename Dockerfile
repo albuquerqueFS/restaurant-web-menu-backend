@@ -1,4 +1,4 @@
-FROM        python:3.8-alpine
+FROM        python:3.9
 
 ENV         PYTHONUNBUFFERED=1
 
@@ -8,11 +8,14 @@ COPY        ./requirements.txt .
 
 COPY        . /home
 
+# RUN apk add --update g++
+# RUN apk add --update gcc
+
 RUN         pip install -r requirements.txt \
-            && adduser --disabled-password --no-create-home doe
+    && adduser --disabled-password --no-create-home doe
 
 USER        doe
 
 EXPOSE      8000
 
-CMD         ["uvicorn", "main:app", "--port", "8000", "--host", "0.0.0.0"]
+CMD         ["uvicorn", "main:app", "--port", "8000", "--host", "0.0.0.0", "--reload"]

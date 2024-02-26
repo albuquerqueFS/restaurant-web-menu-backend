@@ -12,7 +12,7 @@ class RestaurantBase(BaseModel):
 
 
 class RestaurantCreate(RestaurantBase):
-    menus: Optional[MenuBase] = None
+    # menus: Optional[MenuBase] = None
 
     class Config:
         orm_mode = True
