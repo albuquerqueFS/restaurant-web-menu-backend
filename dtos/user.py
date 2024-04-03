@@ -17,9 +17,9 @@ class UserCreate(BaseModel):
         from_attributes = True
 
 class UserRead(BaseModel):
+    id: int
     username: str
     email: str
-    password: str
 
 class CreateUserRequest(BaseModel):
     username: str

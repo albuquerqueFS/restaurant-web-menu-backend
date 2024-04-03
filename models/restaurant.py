@@ -13,7 +13,7 @@ class Restaurant(Base):
     name = Column(String)
     type = Column(String)
     image_cover = Column(String)
-    isOpen = Column(Boolean)
+    isOpen = Column(Boolean, default=True)
 
     user_id = Column(Integer, ForeignKey("users.id"))
     menus = relationship("Menu", back_populates="restaurant", cascade="all, delete-orphan")

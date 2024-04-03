@@ -5,7 +5,7 @@ from fastapi.security import OAuth2PasswordRequestForm
 from sqlalchemy.orm import Session
 from passlib.context import CryptContext
 from database import get_db
-from schemas import user as userSchemas, auth as authSchemas
+from dtos import user as userSchemas, auth as authSchemas
 from models import user as models
 from services import auth as services
 
@@ -13,7 +13,7 @@ router = APIRouter()
 
 bcrypt_context = CryptContext(schemes=['bcrypt'], deprecated='auto')
 
-@router.post("/", status_code=status.HTTP_201_CREATED)
+@router.post("", status_code=status.HTTP_201_CREATED)
 async def create_user(body: userSchemas.CreateUserRequest, db: Session = Depends(get_db)):
     new_user = models.User(
         email=body.email,

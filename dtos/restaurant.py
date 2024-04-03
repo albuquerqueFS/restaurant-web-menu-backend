@@ -1,7 +1,7 @@
 from pydantic import BaseModel
 from typing import Optional
 
-from schemas.menu import MenuBase
+from dtos.menu import MenuBase
 
 
 class RestaurantBase(BaseModel):
@@ -12,7 +12,9 @@ class RestaurantBase(BaseModel):
 
 
 class RestaurantCreate(RestaurantBase):
-    # menus: Optional[MenuBase] = None
+    name: str
+    type: str
+    image_cover: str
 
     class Config:
         orm_mode = True

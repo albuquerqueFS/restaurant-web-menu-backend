@@ -3,7 +3,7 @@ from fastapi import HTTPException
 
 from models.menu import Menu as MenuModel
 from models.restaurant import Restaurant as RestaurantModel
-from schemas.menu import MenuPatch
+from dtos.menu import MenuPatch
 
 def get_menu(id: int, db: Session):
     menus = db.query(MenuModel).filter(MenuModel.id == id).first()
@@ -15,7 +15,6 @@ def get_menus(db: Session):
 
 def create_menu(db: Session, restaurant_id: int, menu: MenuModel):
     restaurant = db.query(RestaurantModel).filter(RestaurantModel.id == restaurant_id).first()
-    menu
     db.add(menu)
     db.commit()
     return menu
